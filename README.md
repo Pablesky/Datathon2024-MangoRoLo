@@ -93,6 +93,20 @@ streamlit run streamlit2.py
 
 
 ---
+### Requirements:
+- python 3.8
+- conda
+- pytorch 1.8.0
+- torchvision 0.15.2
+- cuda 10.2
+- mlflow
+- tqdm
+- pandas
+- numpy
+
+
+
+---
 
 
 
