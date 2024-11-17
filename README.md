@@ -67,6 +67,12 @@ The buidl project aims to revolutionize clothing characterization by automating 
 
 ---
 
+### About us:
+This team is composed by Cristina Aguilera, Iker Garica, Pablo Vega and Sígrid Vila.
+
+
+
+
 ### Future Vision:
 
 The buidl project aspires to be a leading solution in AI-driven clothing characterization, setting benchmarks for innovation, efficiency, and user engagement. By streamlining processes and offering unparalleled customization, buidl will empower industries to achieve greater accuracy and sustainability in garment analysis.
