@@ -83,7 +83,7 @@ The code is structured as follows:
         ├── MangoModel.py              # Model we developed for the task.
         ├── attributes.json            # Complimentary file for the StreamLit page.
         ├── parse_results.py           # Parsing of results from network to submission.
-        ├── streamlit2.py              # Main StreamLit page.
+        ├── MangoRolo.py               # Main StreamLit page.
         ├── MangoGrad.py               # Code to compute the GradCam on images from the Mango Dataset.
         ├── Mango_presentation-pdf     # Presentation of the project.       
         └── train.py                   # Pipeline to train the model.
