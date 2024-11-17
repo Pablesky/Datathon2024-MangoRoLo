@@ -16,7 +16,10 @@ This team is composed by Cristina Aguilera, Iker Garica, Pablo Vega and Sígrid 
 
 
 ### Demo of the project:
-[![Our demo!][https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg](https://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE)](https://www.youtube.com/watch?v=2CbmDZ9KB-0)
+
+
+[![Our demo!](https://img.youtube.com/vi/2CbmDZ9KB-0&ab_channel=IkerGarciaFern%C3%A1ndez/0.jpg)](https://www.youtube.com/watch?v=2CbmDZ9KB-0&ab_channel=IkerGarciaFern%C3%A1ndez)
+
 
 ---
 
