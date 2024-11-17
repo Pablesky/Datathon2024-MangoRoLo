@@ -133,7 +133,9 @@ Down below, a visualization of the losses and some examples of the GradCam on cl
 
 ![Training Loss from MLFlow](train_loss.png)
 
-![GradCam example](gradcam.png)
-![GradCam example](gradcam1.png)
-
+<div align="center">
+    <img src="gradcam.png" alt="GradCam example">
+</div> <div align="center">
+    <img src="gradcam1.png" alt="GradCam example">
+</div>
 
