@@ -15,6 +15,12 @@ This team is composed by Cristina Aguilera, Iker Garica, Pablo Vega and Sígrid 
 ---
 
 
+### Demo of the project:
+[![Our demo!][https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg](https://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE)](https://www.youtube.com/watch?v=2CbmDZ9KB-0)
+
+---
+
+
 ## Model Strucutre:
 The model is based on the pretrained ResNet model, the last classification layer is eliminated and then some layers are added to bring the embedding size to the desired output size. Then, an MLP is added for each feature to predict the class of the attribute. These new layers are finetuned with the Mango Dataset and a weighted loss is used to mitigate the unbalancing of the dataset.
 
