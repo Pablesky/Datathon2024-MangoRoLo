@@ -14,7 +14,7 @@ from torch.nn.functional import softmax
 
 # Streamlit App Title and Description
 st.set_page_config(page_title="Image Classification with ResNet", layout="wide")
-st.title("🖼️ Design attributes logger enhanced by AI predictions")
+st.title("🖼️ Design attributes tagger enhanced by AI predictions")
 st.markdown('#### Instructions')
 st.write("Upload an image of a clothing item and click on 'Infer attributes' to view the results. The highest-scoring attribute along with its probability will be displayed. If the result is not satisfactory, you can expand a dropdown to view the next two highest-scoring attributes and select the one that best matches the image. Finally, click 'Save attributes' to save the selected annotations to the database and the page will be resetted for the next upload.")
 
@@ -33,7 +33,7 @@ numClasses = [7, 7, 12, 6, 13, 34, 34, 7, 5, 5, 5]
 def load_model():
     # Simulate model loading
     model = MangoModel(num_classes_list=numClasses)
-    state_dict = torch.load("weights/mango_model.pth", map_location=torch.device("cuda"))
+    state_dict = torch.load("../Code/mango_model.pth", map_location=torch.device("cpu"))
     model.load_state_dict(state_dict)
     model.eval()  # Set the model to evaluation mode
     
@@ -166,7 +166,7 @@ if uploaded_file is not None:
                             </style>
                             """, unsafe_allow_html=True)
                         # Classification button 
-                        if st.button("Classify"):
+                        if st.button("Infer attributes"):
                             with st.spinner("Classifying... please wait"):
                                 st.session_state.predictions = simulate_prediction()  # Save predictions to session state
                                 st.rerun()
@@ -176,7 +176,6 @@ if uploaded_file is not None:
                     if st.session_state.predictions:
                         with col3:
                             st.markdown("### 📊 **Predictions for Each Attribute:**")
-                            print(type(st.session_state.predictions.items()))
                             for attribute, value in list(st.session_state.predictions.items())[:6]:
                                 st.markdown(f'##### {attribute}')
                                 st.markdown(
@@ -191,11 +190,11 @@ if uploaded_file is not None:
                                 )
 
                                 options = [
-                                    f"❌ {item[0]} ({(item[1]*100):.2f}%)"  # If 'INVALID', add cross emoji first
+                                    f"❌ {item[0].encode('latin-1').decode('utf-8')} ({(item[1]*100):.2f}%)"  # If 'INVALID', add cross emoji first
                                     if item[0] == 'INVALID'  # Check for 'INVALID' first
-                                    else f"🟢 {item[0]} ({(item[1]*100):.2f}%)" if item[1] > 0.7  # High confidence
-                                    else f"🟡 {item[0]} ({(item[1]*100):.2f}%)" if 0.5 <= item[1] <= 0.7  # Medium confidence
-                                    else f"🔴 {item[0]} ({(item[1]*100):.2f}%)"  # Low confidence
+                                    else f"🟢 {item[0].encode('latin-1').decode('utf-8')} ({(item[1]*100):.2f}%)" if item[1] > 0.7  # High confidence
+                                    else f"🟡 {item[0].encode('latin-1').decode('utf-8')} ({(item[1]*100):.2f}%)" if 0.5 <= item[1] <= 0.7  # Medium confidence
+                                    else f"🔴 {item[0].encode('latin-1').decode('utf-8')} ({(item[1]*100):.2f}%)"  # Low confidence
                                     for item in value
                                 ]
                                 
@@ -224,11 +223,11 @@ if uploaded_file is not None:
                                 )
 
                                 options = [
-                                    f"❌ {item[0]} ({(item[1]*100):.2f}%)"  # If 'INVALID', add cross emoji first
+                                    f"❌ {item[0].encode('latin-1').decode('utf-8')} ({(item[1]*100):.2f}%)"  # If 'INVALID', add cross emoji first
                                     if item[0] == 'INVALID'  # Check for 'INVALID' first
-                                    else f"🟢 {item[0]} ({(item[1]*100):.2f}%)" if item[1] > 0.7  # High confidence
-                                    else f"🟡 {item[0]} ({(item[1]*100):.2f}%)" if 0.5 <= item[1] <= 0.7  # Medium confidence
-                                    else f"🔴 {item[0]} ({(item[1]*100):.2f}%)"  # Low confidence
+                                    else f"🟢 {item[0].encode('latin-1').decode('utf-8')} ({(item[1]*100):.2f}%)" if item[1] > 0.7  # High confidence
+                                    else f"🟡 {item[0].encode('latin-1').decode('utf-8')} ({(item[1]*100):.2f}%)" if 0.5 <= item[1] <= 0.7  # Medium confidence
+                                    else f"🔴 {item[0].encode('latin-1').decode('utf-8')} ({(item[1]*100):.2f}%)"  # Low confidence
                                     for item in value
                                 ]
                                 
@@ -246,11 +245,33 @@ else:
 
 # Display results
 st.markdown("""
-    --- 
-    ### 🔍 **About the Model:**
-    The model used for this classification is a pre-trained **ResNet-50** model, which has been trained on a large dataset to classify images into one of 11 categories.
-    The model provides predictions with high accuracy. You can test the model with different images for more insights.
-""")
+            ---
+        ### 🔍 **About the Model:**
+
+        The artificial intelligence behind this tool is based on a **multi-class classification model**. For this task, we have selected **ResNet-50**, a deep learning model pretrained on **ImageNet** and subsequently fine-tuned using the **Mango dataset**. All layers were unfrozen to allow the model to learn features optimally. Below, we outline the key aspects of the training process:
+
+        1. **Loss Calculation & Handling Class Imbalance:**  
+        We utilized the following strategies to compute the loss efficiently:
+        - **One-Hot Encoding for Ground Truth:** The attributes used for the ground truth (GT) are encoded as one-hot vectors, where a `1` represents the true class label and `0` indicates the absence of that class.
+        - **Logits Splitting:** The vector of logits is divided into smaller parts based on the number of elements in each attribute. This allows for more granular loss computation, improving model performance.
+        - **Class Imbalance Adjustment:** To address the challenge of data imbalance, we apply **class weighting**. Less frequent attributes are given higher weights, while more common attributes receive reduced weights. This strategy helps the model pay more attention to underrepresented classes.
+
+        2. **Model Architecture:**  
+        As illustrated in the accompanying image, the model consists of multiple **classification heads**, each corresponding to a specific attribute. Within each head, the model predicts the value of the respective attribute, enabling multi-class predictions for each input.
+
+        
+    """)
+
+image = Image.open('model_architecture.png')
+
+# st.markdown(
+#     "<div style='display: flex; justify-content: center;'><img src='model_architecture.png' width='400'/></div>",
+#     unsafe_allow_html=True
+# )
+col_1, col_2, col_3 = st.columns([1, 2, 1], gap="large")
+
+with col_2:
+    st.image(image, caption="Model architecure", use_container_width=True, width=400)
 
 
 
