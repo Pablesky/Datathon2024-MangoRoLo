@@ -84,6 +84,7 @@ The code is structured as follows:
         ├── attributes.json            # Complimentary file for the StreamLit page.
         ├── parse_results.py           # Parsing of results from network to submission.
         ├── streamlit2.py              # Main StreamLit page.
+        ├── mangograd.py               # Code to compute the GradCam on images from the Mango Dataset.
         └── train.py                   # Pipeline to train the model.
       
 ---
