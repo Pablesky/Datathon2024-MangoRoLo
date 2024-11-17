@@ -3,7 +3,7 @@
 **Objective:**  
 The buidl project aims to revolutionize clothing characterization by automating and standardizing the process through advanced AI technology. It leverages image analysis to identify, classify, and describe garments with precision while allowing for manual refinements to ensure accuracy and maintain user control.
 
-For more information specifically about MLFLOW, [click here](#mlflow-usage).
+For more information specifically about MLFLOW, go to the bottom of the README.
 
 ---
 
@@ -109,7 +109,12 @@ streamlit run streamlit2.py
 
 ---
 
+## Model Strucutre:
+The model is based on the pretrained ResNet model, the last classification layer is eliminated and then some layers are added to bring the embedding size to the desired output size. Then, an MLP is added for each feature to predict the class of the attribute. These new layers are finetuned with the Mango Dataset and a weighted loss is used to mitigate the unbalancing of the dataset.
 
+
+
+---
 
 ### Future Vision:
 
@@ -118,6 +123,10 @@ The buidl project aspires to be a leading solution in AI-driven clothing charact
 ---
 
 ## MLFlow:
-[## MLFlow:](#mlflow-usage)
+We used this tool to keep track of the logs of the training process, specifically the loss. Moreover, we used another library to use GradCam to enhance the explainability of our model.
+Down below, a visualization of the losses and some examples of the GradCam on clothes of the Mango dataset.
+
+
+
 
 
