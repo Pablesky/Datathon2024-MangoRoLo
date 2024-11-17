@@ -3,6 +3,8 @@
 **Objective:**  
 The buidl project aims to revolutionize clothing characterization by automating and standardizing the process through advanced AI technology. It leverages image analysis to identify, classify, and describe garments with precision while allowing for manual refinements to ensure accuracy and maintain user control.
 
+For more information specifically about MLFLOW, [click here](#mlflow-usage).
+
 ---
 
 ### Key Features:
@@ -105,7 +107,6 @@ streamlit run streamlit2.py
 - numpy
 
 
-
 ---
 
 
@@ -113,3 +114,10 @@ streamlit run streamlit2.py
 ### Future Vision:
 
 The buidl project aspires to be a leading solution in AI-driven clothing characterization, setting benchmarks for innovation, efficiency, and user engagement. By streamlining processes and offering unparalleled customization, buidl will empower industries to achieve greater accuracy and sustainability in garment analysis.
+
+---
+
+## MLFlow:
+[## MLFlow:](#mlflow-usage)
+
+
