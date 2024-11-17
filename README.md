@@ -88,7 +88,7 @@ The code is structured as follows:
 ### Execution instructions:
 To visualize the page, you need to run the streamlit2.py as follows:
 ```
-python streamlit2.py
+streamlit run streamlit2.py
 ```
 
 
