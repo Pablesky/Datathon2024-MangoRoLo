@@ -113,6 +113,7 @@ streamlit run streamlit2.py
 ## Model Strucutre:
 The model is based on the pretrained ResNet model, the last classification layer is eliminated and then some layers are added to bring the embedding size to the desired output size. Then, an MLP is added for each feature to predict the class of the attribute. These new layers are finetuned with the Mango Dataset and a weighted loss is used to mitigate the unbalancing of the dataset.
 
+![Model Structure](Dibujo_sin_titulo.png)
 
 
 ---
@@ -127,7 +128,9 @@ The buidl project aspires to be a leading solution in AI-driven clothing charact
 We used this tool to keep track of the logs of the training process, specifically the loss. Moreover, we used another library to use GradCam to enhance the explainability of our model.
 Down below, a visualization of the losses and some examples of the GradCam on clothes of the Mango dataset.
 
+![Training Loss from MLFlow](train_loss.png)
 
+![GradCam example](gradcam.png)
 
 
 
