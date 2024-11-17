@@ -1,0 +1,13 @@
+{
+    "Cane height type": ["INVALID", "Bloque", "Cuña", "Cuña abotinada", "Alta", "Baja", "Media"],
+    "Closure placement": ["INVALID", "Cuello", "Sin cierre", "cierre delantero", "cierre trasero", "cierre hombro", "lateral"],
+    "Heel shape type": ["INVALID", "Plano", "Bloque", "Plataforma", "Plataforma plana", "De aguja", "Trompeta", "Rectangular", "Kitten", "Embudo", "Cuña", "Plataforma en la parte delantera"],
+    "Knit structure": ["INVALID", "Punto Fino", "Punto Medio", "Punto Grueso", "UNKNOWN", "Hecho a mano"],
+    "Length type": ["INVALID", "Largo", "Corto", "Standard", "Crop", "Medio", "Midi", "Capri", "Mini/Micro", "Asimétrico", "Maxi", "Tres Cuartos", "Tobillero"],
+    "Neck lapel type": ["Hawaiano/Bowling", "INVALID", "Capucha", "Regular", "Panadero", "Cutaway", "Caja", "Pico", "Mao", "Smoking", "Peak Lapel", "Alto/Envolvente", "Perkins", "Button Down", "Halter", "Escotado", "Redondo", "Polo", "Camisero", "Chimenea", "Cisne", "Off Shoulder", "Solapa", "Cruzado", "Shawl", "Palabra Honor", "Babydoll/Peter Pan", "Drapeado", "Barca", "Waterfall", "Asimétrico", "Espalda Abierta", "Kimono", "Sin solapa"],
+    "Silhouette type": ["Regular", "INVALID", "Slim", "5 Bolsillos", "Jogger", "Modern slim", "Chino", "Recto", "Slouchy", "Skinny", "Acampanado/Flare", "Push Up", "Mom", "Evase", "Culotte", "Palazzo", "Acampanado/Bootcut", "Cargo", "Boyfriend", "Fino", "Sarouel", "Lápiz", "Ancho", "Oversize", "Halter", "Wide leg", "Paperbag", "Relaxed", "Tapered", "Bandeau", "Superslim", "Loose", "Carrot", "Parachute"],
+    "Sleeve length type": ["Corta", "INVALID", "Larga", "Tirante Ancho", "Tirante Fino", "Sin Manga", "Tres Cuartos"],
+    "Toecap type": ["INVALID", "Redonda", "Con punta", "Abierta", "Cuadrada"],
+    "Waist type": ["INVALID", "Ajustable/Goma", "Regular Waist", "High Waist", "Low Waist"],
+    "Woven structure": ["INVALID", "Pesado", "Ligero", "Medio", "Elástico"]
+}
