@@ -3,7 +3,6 @@ import torch.nn as nn
 import torchvision.models as models
 from torchvision.models.resnet import ResNet50_Weights
 from torchvision import models, transforms
-from torchsummary import summary
 import os
 
 class MangoModel(nn.Module):

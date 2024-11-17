@@ -4,11 +4,12 @@ import torch.optim as optim
 from torch.utils.data import Dataset, DataLoader
 from torchvision import transforms
 from torchvision.models import resnet50
-from MangoModel import MangoModel
+from MangoModel2 import MangoModel
 from MangoData import MangoData
 import os
 from tqdm import tqdm
 import warnings
+import mlflow
 
 # Suppress the specific UserWarning for the missing image functionality
 warnings.filterwarnings("ignore", category=UserWarning, module="torchvision.io.image")
@@ -38,6 +39,10 @@ def train_one_epoch(model, dataloader, criterion, optimizer, device):
 
 def main():
     # Model Definition
+    mlflow.autolog()
+    
+    mlflow.start_run()
+    
     numClasses = [7, 7, 12, 6, 13, 34, 34, 7, 5, 5, 5]
     mangoModel = MangoModel(num_classes_list=numClasses).to(device)
     
@@ -51,17 +56,19 @@ def main():
         )
     ])
     
-    img_path = os.path.join('images', 'images')
+    img_path = 'images/images'
     mangoDataset = MangoData(
         csv_path='train.csv', 
         img_folder=img_path, 
         additional_transform=mangoTransforms)
     
+    batch_size = 32
+    
     mangoDataloader = DataLoader(
         mangoDataset, 
-        batch_size=8, 
+        batch_size=batch_size, 
         shuffle=True,
-        num_workers=os.cpu_count()
+        num_workers=8
     )
     
     # Loss Function and Optimizer
@@ -69,18 +76,28 @@ def main():
     optimizer = optim.Adam(mangoModel.parameters(), lr=1e-4)
     
     # Training Loop
-    num_epochs = 10
+    num_epochs = 20
+    mlflow.log_param("num_epochs", num_epochs)
+    mlflow.log_param("batch_size", batch_size)
+    mlflow.log_param("learning_rate", 1e-4)
+    mlflow.log_param("optimizer", "Adam")
+    
     for epoch in range(num_epochs):
         print(f'Starting epoch {epoch+1}/{num_epochs}')
         train_loss = train_one_epoch(mangoModel, mangoDataloader, criterion, optimizer, device)
         print(f"Epoch {epoch+1}/{num_epochs}, Train Loss: {train_loss:.4f}")
+    
+        mlflow.log_metric("train_loss", train_loss, step=epoch)
         
         # If you have a validation set, you can add evaluation here
         # val_loss, val_accuracy = validate_one_epoch(mangoModel, val_dataloader, criterion, device)
         # print(f"Epoch {epoch+1}/{num_epochs}, Validation Loss: {val_loss:.4f}, Validation Accuracy: {val_accuracy:.2f}%")
         
         # Save the model
-        torch.save(mangoModel.state_dict(), "mango_model.pth")
+        torch.save(mangoModel.state_dict(), f'new_weights/mango_model_{epoch}.pth')
+        
+    mlflow.log_artifact(f'new_weights/mango_model_{num_epochs - 1}.pth')
+    mlflow.end_run()
 
 if __name__ == '__main__':
     main()
