@@ -71,6 +71,29 @@ The buidl project aims to revolutionize clothing characterization by automating 
 This team is composed by Cristina Aguilera, Iker Garica, Pablo Vega and Sígrid Vila.
 
 
+---
+
+### Folder structure 
+The code is structured as follows:
+
+        .
+        ├── MangoData.py               # Dataset implementation to read csv and images of Mango.
+        ├── MangoModel.py              # Model we developed for the task.
+        ├── attributes.json            # Complimentary file for the StreamLit page.
+        ├── parse_results.py           # Parsing of results from network to submission.
+        ├── streamlit2.py              # Main StreamLit page.
+        └── train.py                   # Pipeline to train the model.
+      
+---
+### Execution instructions:
+To visualize the page, you need to run the streamlit2.py as follows:
+```
+python streamlit2.py
+```
+
+
+---
+
 
 
 ### Future Vision:
