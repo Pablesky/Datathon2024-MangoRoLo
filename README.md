@@ -7,6 +7,22 @@ For more information specifically about MLFLOW, go to the bottom of the README.
 
 ---
 
+
+### About us:
+This team is composed by Cristina Aguilera, Iker Garica, Pablo Vega and Sígrid Vila.
+
+
+---
+
+
+## Model Strucutre:
+The model is based on the pretrained ResNet model, the last classification layer is eliminated and then some layers are added to bring the embedding size to the desired output size. Then, an MLP is added for each feature to predict the class of the attribute. These new layers are finetuned with the Mango Dataset and a weighted loss is used to mitigate the unbalancing of the dataset.
+
+![Model Structure](Dibujo_sin_titulo.png)
+
+
+---
+
 ### Key Features:
 
 1. **AI-Driven Garment Analysis:**  
@@ -69,12 +85,6 @@ For more information specifically about MLFLOW, go to the bottom of the README.
 
 ---
 
-### About us:
-This team is composed by Cristina Aguilera, Iker Garica, Pablo Vega and Sígrid Vila.
-
-
----
-
 ### Folder structure 
 The code is structured as follows:
 
@@ -109,15 +119,7 @@ streamlit run streamlit2.py
 - numpy
 
 
----
 
-## Model Strucutre:
-The model is based on the pretrained ResNet model, the last classification layer is eliminated and then some layers are added to bring the embedding size to the desired output size. Then, an MLP is added for each feature to predict the class of the attribute. These new layers are finetuned with the Mango Dataset and a weighted loss is used to mitigate the unbalancing of the dataset.
-
-![Model Structure](Dibujo_sin_titulo.png)
-
-
----
 
 ### Future Vision:
 
@@ -132,6 +134,6 @@ Down below, a visualization of the losses and some examples of the GradCam on cl
 ![Training Loss from MLFlow](train_loss.png)
 
 ![GradCam example](gradcam.png)
-
+![GradCam example](gradcam1.png)
 
 
